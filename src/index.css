@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #f7f9fb;
+  color: #191c1e;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  margin: 0;
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  text-align: left;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 64, 207, 0.1);
+}
+
+.primary-gradient {
+  background: linear-gradient(135deg, #0040cf 0%, #2f5bea 100%);
+}
+
+.network-grid {
+  background-image: radial-gradient(circle at 1px 1px, rgba(0, 64, 207, 0.08) 1px, transparent 0);
+  background-size: 40px 40px;
+}
+
+.mesh-gradient {
+  background: radial-gradient(at 0% 0%, rgba(0, 64, 207, 0.05) 0, transparent 50%),
+              radial-gradient(at 100% 100%, rgba(47, 91, 234, 0.05) 0, transparent 50%);
+}
+
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 64, 207, 0.08);
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+.glow-dot {
+  animation: pulse-glow 3s infinite;
+}
+
+/* ── Scroll reveal ─────────────────────────────────────── */
+
+.reveal,
+.reveal-left,
+.reveal-right {
+  transition:
+    opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal       { opacity: 0; transform: translateY(32px); }
+.reveal-left  { opacity: 0; transform: translateX(-48px); }
+.reveal-right { opacity: 0; transform: translateX(48px); }
+
+.reveal.is-visible,
+.reveal-left.is-visible,
+.reveal-right.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* hover-lift must reset its own transform when visible */
+.hover-lift.reveal.is-visible:hover      { transform: translateY(-8px); }
+.hover-lift.reveal-left.is-visible:hover { transform: translateY(-8px); }
