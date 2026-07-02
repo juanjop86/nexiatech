@@ -6,44 +6,41 @@ const reasons = [
 
 export default function WhyNexia() {
   return (
-    <section className="py-xl relative overflow-hidden" id="expertise">
-      <div className="container mx-auto px-margin-desktop grid md:grid-cols-2 gap-xl items-center">
-        {/* Left: Uptime Visual */}
-        <div className="reveal-left relative">
-          <div className="absolute -inset-10 primary-gradient opacity-5 blur-3xl rounded-full"></div>
-          <div className="relative z-10 glass-panel p-xl rounded-xl text-center border-primary/10 shadow-lg">
-            <div className="font-headline-lg text-[100px] font-bold text-primary leading-none">99.9%</div>
-            <div className="font-headline-sm text-on-surface mt-4 uppercase tracking-widest font-bold">Uptime Garantizado</div>
-            <div className="mt-8 flex justify-center gap-4">
-              <div className="w-4 h-4 bg-primary rounded-full glow-dot"></div>
-              <div className="w-4 h-4 bg-primary rounded-full glow-dot" style={{ animationDelay: '0.5s' }}></div>
-              <div className="w-4 h-4 bg-primary rounded-full glow-dot" style={{ animationDelay: '1s' }}></div>
+    <section className="pb-[110px]" id="nexia">
+      <div className="container mx-auto px-margin-desktop">
+        <div className="reveal bg-panel text-panel-text rounded-3xl overflow-hidden border border-panel-line">
+          <div className="grid md:grid-cols-2">
+            {/* Left */}
+            <div className="p-9 md:p-[74px]">
+              <span className="eyebrow text-accent-2 [&::before]:bg-accent-2">Por qué Nexia</span>
+              <h2 className="font-display text-headline-md text-panel-text mt-5 mb-5">Por qué elegir Nexia Tech</h2>
+              <p className="text-panel-muted text-[16.5px] leading-relaxed max-w-[430px]">
+                Trabajamos como una extensión de tu equipo: cercanos, transparentes y enfocados en resultados, no en horas facturadas.
+              </p>
+              <div className="mt-8 flex flex-col">
+                {reasons.map((reason) => (
+                  <div key={reason.title} className="flex gap-4 items-start py-[17px] border-t border-panel-line last:border-b">
+                    <span className="w-[7px] h-[7px] rounded-full bg-accent-2 mt-2 shrink-0 shadow-[0_0_0_4px_color-mix(in_srgb,var(--accent-2)_22%,transparent)]" />
+                    <div>
+                      <b className="font-display font-medium text-[16px] block mb-1">{reason.title}</b>
+                      <span className="text-panel-muted text-[14px]">{reason.description}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right */}
+            <div className="relative bg-panel-2 grid place-items-center overflow-hidden min-h-[300px]">
+              <div className="panel-grid-bg" />
+              <div className="absolute border border-panel-line rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px]" />
+              <div className="absolute border border-panel-line rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] h-[220px]" />
+              <div className="relative text-center p-10">
+                <div className="font-display grad-text text-[clamp(54px,8vw,92px)] font-semibold tracking-tight leading-none">99.9%</div>
+                <div className="text-panel-muted mt-3 text-[14.5px]">Disponibilidad garantizada por SLA</div>
+              </div>
             </div>
           </div>
-        </div>
-
-        {/* Right: Reasons */}
-        <div className="space-y-md">
-          <h2 className="reveal font-headline-lg text-headline-lg text-on-surface" style={{ transitionDelay: '100ms' }}>
-            Por qué elegir Nexia Tech
-          </h2>
-          <ul className="space-y-md">
-            {reasons.map((reason, i) => (
-              <li
-                key={reason.title}
-                className="reveal flex items-start gap-4"
-                style={{ transitionDelay: `${200 + i * 100}ms` }}
-              >
-                <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                  <span className="material-symbols-outlined text-primary text-sm font-bold">check</span>
-                </div>
-                <div>
-                  <h4 className="font-headline-sm text-headline-sm text-on-surface">{reason.title}</h4>
-                  <p className="font-body-sm text-on-surface-variant">{reason.description}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
         </div>
       </div>
     </section>

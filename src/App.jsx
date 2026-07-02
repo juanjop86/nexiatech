@@ -12,7 +12,7 @@ export default function App() {
   useReveal()
 
   return (
-    <div className="selection:bg-primary/20">
+    <div>
       <NavBar />
       <Hero />
       <Services />

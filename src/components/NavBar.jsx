@@ -1,63 +1,70 @@
 import { useState, useEffect } from 'react'
-
-const SPRING = 'cubic-bezier(0.34, 1.2, 0.64, 1)'
-const DURATION = '600ms'
-
-const spacerStyle = (grow, minWidth = 0) => ({
-  flexGrow: grow,
-  flexShrink: 1,
-  flexBasis: 0,
-  minWidth,
-  transition: `flex-grow ${DURATION} ${SPRING}, min-width ${DURATION} ${SPRING}`,
-  overflow: 'hidden',
-})
+import { Headset, List, Moon, Sun } from '@phosphor-icons/react'
+import { useTheme } from '../hooks/useTheme'
 
 export default function NavBar() {
   const [scrolled, setScrolled] = useState(false)
+  const { theme, toggleTheme } = useTheme()
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 60)
+    const handleScroll = () => setScrolled(window.scrollY > 12)
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   return (
-    <nav className="fixed top-0 w-full h-20 z-50 bg-white/80 backdrop-blur-xl border-b border-outline-variant/30 shadow-sm flex items-center px-margin-desktop">
+    <header
+      className={`sticky top-0 z-50 backdrop-blur-xl bg-[color-mix(in_srgb,var(--bg)_82%,transparent)] transition-[border-color] duration-300 border-b ${
+        scrolled ? 'border-line' : 'border-transparent'
+      }`}
+    >
+      <div className="container mx-auto px-margin-desktop flex items-center justify-between h-[74px] gap-md">
+        {/* Logo */}
+        <a href="#inicio" className="flex items-center gap-2.5 font-display text-[21px] font-semibold tracking-tight text-ink shrink-0">
+          <span className="w-8 h-8 grid place-items-center shrink-0">
+            <svg viewBox="0 0 30 30" fill="none" className="w-full h-full">
+              <rect x="1.5" y="1.5" width="27" height="27" rx="8" stroke="currentColor" strokeWidth="1.5" opacity="0.25" />
+              <path d="M9 21V9l12 12V9" stroke="var(--accent)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </span>
+          <span>Nexia<span className="grad-text">Tech</span></span>
+        </a>
 
-      {/* Espaciador exterior izquierdo: crece al centrar */}
-      <div style={spacerStyle(scrolled ? 1 : 0)} />
+        {/* Nav links */}
+        <nav className="hidden md:flex items-center gap-8">
+          <a className="text-[14.5px] font-medium text-ink-2 hover:text-ink transition-colors duration-200" href="#servicios">Servicios</a>
+          <a className="text-[14.5px] font-medium text-ink-2 hover:text-ink transition-colors duration-200" href="#nexia">Por qué Nexia</a>
+          <a className="text-[14.5px] font-medium text-ink-2 hover:text-ink transition-colors duration-200" href="#nosotros">Nosotros</a>
+          <a className="text-[14.5px] font-medium text-ink-2 hover:text-ink transition-colors duration-200" href="#contacto">Contacto</a>
+        </nav>
 
-      {/* Logo */}
-      <div className="flex items-center gap-2 shrink-0">
-        <div className="w-8 h-8 primary-gradient rounded-lg flex items-center justify-center">
-          <span className="material-symbols-outlined text-white text-md">hub</span>
+        {/* Actions */}
+        <div className="flex items-center gap-3.5 shrink-0">
+          <button
+            onClick={toggleTheme}
+            aria-label="Cambiar tema"
+            className="w-10 h-10 rounded-[11px] border border-line-2 bg-surface text-ink grid place-items-center hover:border-accent hover:text-accent hover:-translate-y-0.5 transition-all duration-300"
+          >
+            {theme === 'dark' ? <Sun size={19} weight="regular" /> : <Moon size={19} weight="regular" />}
+          </button>
+          <a
+            href="#contacto"
+            className="hidden sm:inline-flex items-center gap-2 bg-grad text-white px-6 py-3.5 rounded-xl font-semibold text-[15px] shadow-[0_10px_26px_-10px_var(--accent)] hover:-translate-y-0.5 hover:shadow-[0_16px_34px_-10px_var(--accent)] transition-all duration-300"
+          >
+            <Headset size={18} /> Soporte
+          </a>
+          <button
+            aria-label="Menú"
+            className="md:hidden w-10 h-10 rounded-[11px] border border-line-2 bg-surface text-ink grid place-items-center"
+            onClick={() => {
+              const target = document.getElementById('servicios')
+              window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 64, behavior: 'smooth' })
+            }}
+          >
+            <List size={20} />
+          </button>
         </div>
-        <span className="font-headline-md text-headline-sm font-bold text-primary">Nexia Tech Chile</span>
       </div>
-
-      {/* Espaciador interior izquierdo: encoge al centrar */}
-      <div style={spacerStyle(scrolled ? 0 : 1, scrolled ? 24 : 0)} />
-
-      {/* Nav links */}
-      <div className="hidden md:flex items-center gap-md shrink-0">
-        <a className="font-body-md text-body-sm text-primary font-bold border-b-2 border-primary pb-1" href="#">Home</a>
-        <a className="font-body-md text-body-sm text-on-surface-variant hover:text-primary transition-colors duration-300" href="#services">Servicios</a>
-        <a className="font-body-md text-body-sm text-on-surface-variant hover:text-primary transition-colors duration-300" href="#expertise">Expertise</a>
-        <a className="font-body-md text-body-sm text-on-surface-variant hover:text-primary transition-colors duration-300" href="#team">Equipo</a>
-        <a className="font-body-md text-body-sm text-on-surface-variant hover:text-primary transition-colors duration-300" href="#contact">Contacto</a>
-      </div>
-
-      {/* Espaciador interior derecho: encoge al centrar */}
-      <div style={spacerStyle(scrolled ? 0 : 1, scrolled ? 24 : 0)} />
-
-      {/* Soporte button */}
-      <button className="bg-primary text-on-primary px-lg py-sm rounded-lg font-bold scale-95 active:scale-90 transition-all hover:bg-primary-container shrink-0">
-        Soporte
-      </button>
-
-      {/* Espaciador exterior derecho: crece al centrar */}
-      <div style={spacerStyle(scrolled ? 1 : 0)} />
-
-    </nav>
+    </header>
   )
 }

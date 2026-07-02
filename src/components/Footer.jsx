@@ -1,93 +1,64 @@
+import { Envelope, GithubLogo, InstagramLogo, LinkedinLogo, MapPin, Phone } from '@phosphor-icons/react'
+
 const services = [
-  'Desarrollo Web',
-  'Routing & Switching',
-  'Servidores Cloud',
-  'Ciberseguridad',
-  'DevOps & Automatización',
+  'Apps Web',
+  'Apps Desktop',
+  'Servidores',
+  'Redes',
 ]
 
 const company = [
-  'Nosotros',
-  'Blog',
-  'Careers',
-  'Network Status',
+  { label: 'Por qué Nexia', href: '#nexia' },
+  { label: 'Nosotros', href: '#nosotros' },
+  { label: 'Contacto', href: '#contacto' },
 ]
 
 const socials = [
-  { icon: 'business', label: 'LinkedIn' },
-  { icon: 'code',     label: 'GitHub' },
-  { icon: 'tag',      label: 'X' },
+  { Icon: LinkedinLogo, label: 'LinkedIn' },
+  { Icon: InstagramLogo, label: 'Instagram' },
+  { Icon: GithubLogo, label: 'GitHub' },
 ]
 
 export default function Footer() {
   return (
-    <footer>
-      {/* ── Zona 1: CTA strip ─────────────────────────────── */}
-      <div className="primary-gradient py-lg">
-        <div className="reveal container mx-auto px-margin-desktop flex flex-col md:flex-row items-center justify-between gap-md">
-          <div>
-            <p className="text-white font-bold text-headline-sm leading-tight">
-              ¿Listo para transformar tu infraestructura?
-            </p>
-            <p className="text-white/70 text-body-sm mt-1">
-              Habla con nuestro equipo y obtén una auditoría técnica sin costo.
-            </p>
-          </div>
-          <a
-            href="#contact"
-            className="shrink-0 border-2 border-white text-white font-bold px-xl py-sm rounded-lg hover:bg-white hover:text-primary transition-all duration-300"
-          >
-            Hablar con un experto
-          </a>
-        </div>
-      </div>
-
-      {/* ── Zona 2: Columnas principales ──────────────────── */}
-      <div className="bg-inverse-surface relative overflow-hidden">
-        {/* network grid overlay */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.04) 1px, transparent 0)',
-            backgroundSize: '40px 40px',
-          }}
-        />
-
-        <div className="relative z-10 container mx-auto px-margin-desktop py-xl grid grid-cols-1 md:grid-cols-4 gap-xl">
+    <footer className="mt-[110px] bg-panel text-panel-text pt-20 pb-9">
+      <div className="container mx-auto px-margin-desktop">
+        <div className="grid grid-cols-1 md:grid-cols-[1.7fr_1fr_1fr_1fr] gap-10 pb-14">
           {/* Col 1 — Marca */}
-          <div className="reveal-left space-y-md">
-            <div className="flex items-center gap-2">
-              <div className="w-9 h-9 primary-gradient rounded-lg flex items-center justify-center shrink-0">
-                <span className="material-symbols-outlined text-white" style={{ fontSize: '20px' }}>hub</span>
-              </div>
-              <span className="text-inverse-on-surface font-bold text-headline-sm">Nexia Tech Chile</span>
-            </div>
-
-            <p className="text-white/60 text-body-sm leading-relaxed max-w-[220px]">
-              Elevando el estándar tecnológico para pymes y startups en América Latina.
+          <div className="reveal-left">
+            <a href="#inicio" className="flex items-center gap-2.5 font-display text-[21px] font-semibold tracking-tight text-panel-text mb-[18px]">
+              <span className="w-8 h-8 grid place-items-center shrink-0">
+                <svg viewBox="0 0 30 30" fill="none" className="w-full h-full">
+                  <rect x="1.5" y="1.5" width="27" height="27" rx="8" stroke="currentColor" strokeWidth="1.5" opacity="0.25" />
+                  <path d="M9 21V9l12 12V9" stroke="var(--accent-2)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
+              <span>Nexia<span className="grad-text">Tech</span></span>
+            </a>
+            <p className="text-panel-muted text-[14.5px] leading-relaxed max-w-[280px]">
+              Tecnología joven, visión de futuro. Desarrollo, infraestructura y redes para empresas chilenas que quieren crecer.
             </p>
-
-            <div className="flex gap-sm pt-xs">
-              {socials.map((s) => (
-                <button
-                  key={s.label}
-                  aria-label={s.label}
-                  className="w-9 h-9 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/70 hover:text-white transition-all duration-200"
+            <div className="flex gap-2.5 mt-5">
+              {socials.map(({ Icon, label }) => (
+                <a
+                  key={label}
+                  href="#"
+                  aria-label={label}
+                  className="w-[38px] h-[38px] rounded-[10px] border border-panel-line grid place-items-center text-panel-muted hover:text-accent-2 hover:border-accent-2 hover:-translate-y-0.5 transition-all duration-300"
                 >
-                  <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>{s.icon}</span>
-                </button>
+                  <Icon size={18} />
+                </a>
               ))}
             </div>
           </div>
 
           {/* Col 2 — Servicios */}
-          <div className="reveal space-y-md" style={{ transitionDelay: '80ms' }}>
-            <h4 className="text-white font-bold text-[11px] uppercase tracking-widest">Servicios</h4>
-            <ul className="space-y-sm">
+          <div className="reveal" style={{ transitionDelay: '80ms' }}>
+            <h4 className="text-[12.5px] uppercase tracking-widest text-white/50 font-semibold mb-4">Servicios</h4>
+            <ul className="flex flex-col">
               {services.map((s) => (
                 <li key={s}>
-                  <a href="#services" className="text-white/60 hover:text-white text-body-sm transition-colors duration-200 flex items-center gap-2 group">
-                    <span className="w-1 h-1 rounded-full bg-primary group-hover:bg-white transition-colors shrink-0" />
+                  <a href="#servicios" className="block text-panel-muted hover:text-accent-2 hover:translate-x-1 text-[14px] py-1.5 transition-all duration-200 w-fit">
                     {s}
                   </a>
                 </li>
@@ -96,14 +67,13 @@ export default function Footer() {
           </div>
 
           {/* Col 3 — Empresa */}
-          <div className="reveal space-y-md" style={{ transitionDelay: '160ms' }}>
-            <h4 className="text-white font-bold text-[11px] uppercase tracking-widest">Empresa</h4>
-            <ul className="space-y-sm">
+          <div className="reveal" style={{ transitionDelay: '160ms' }}>
+            <h4 className="text-[12.5px] uppercase tracking-widest text-white/50 font-semibold mb-4">Empresa</h4>
+            <ul className="flex flex-col">
               {company.map((c) => (
-                <li key={c}>
-                  <a href="#" className="text-white/60 hover:text-white text-body-sm transition-colors duration-200 flex items-center gap-2 group">
-                    <span className="w-1 h-1 rounded-full bg-primary group-hover:bg-white transition-colors shrink-0" />
-                    {c}
+                <li key={c.label}>
+                  <a href={c.href} className="block text-panel-muted hover:text-accent-2 hover:translate-x-1 text-[14px] py-1.5 transition-all duration-200 w-fit">
+                    {c.label}
                   </a>
                 </li>
               ))}
@@ -111,42 +81,27 @@ export default function Footer() {
           </div>
 
           {/* Col 4 — Contacto */}
-          <div className="reveal-right space-y-md" style={{ transitionDelay: '240ms' }}>
-            <h4 className="text-white font-bold text-[11px] uppercase tracking-widest">Contacto</h4>
-            <ul className="space-y-sm">
-              <li className="flex items-start gap-sm text-white/60 text-body-sm">
-                <span className="material-symbols-outlined text-primary shrink-0" style={{ fontSize: '18px', marginTop: '2px' }}>mail</span>
-                contacto@nexiatech.cl
+          <div className="reveal-right" style={{ transitionDelay: '240ms' }}>
+            <h4 className="text-[12.5px] uppercase tracking-widest text-white/50 font-semibold mb-4">Contacto</h4>
+            <ul className="flex flex-col gap-2">
+              <li className="flex items-center gap-2.5 text-panel-muted text-[14px]">
+                <Envelope size={17} className="text-accent-2 shrink-0" /> contacto@nexiatech.cl
               </li>
-              <li className="flex items-start gap-sm text-white/60 text-body-sm">
-                <span className="material-symbols-outlined text-primary shrink-0" style={{ fontSize: '18px', marginTop: '2px' }}>call</span>
-                +56 2 2456 7890
+              <li className="flex items-center gap-2.5 text-panel-muted text-[14px]">
+                <Phone size={17} className="text-accent-2 shrink-0" /> +56 2 2456 7890
               </li>
-              <li className="flex items-start gap-sm text-white/60 text-body-sm">
-                <span className="material-symbols-outlined text-primary shrink-0" style={{ fontSize: '18px', marginTop: '2px' }}>location_on</span>
-                Las Condes, Santiago, Chile
+              <li className="flex items-center gap-2.5 text-panel-muted text-[14px]">
+                <MapPin size={17} className="text-accent-2 shrink-0" /> Las Condes, Santiago, Chile
               </li>
             </ul>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 primary-gradient text-white text-body-sm font-bold px-md py-sm rounded-lg hover:shadow-lg hover:shadow-primary/20 transition-all duration-300"
-            >
-              Contactar
-              <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>arrow_forward</span>
-            </a>
           </div>
         </div>
-      </div>
 
-      {/* ── Zona 3: Bottom bar ────────────────────────────── */}
-      <div className="bg-[#1a2230] border-t border-white/10 py-md">
-        <div className="reveal container mx-auto px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-sm">
-          <p className="text-white/40 text-body-sm">
-            © 2024 Nexia Tech Chile. Todos los derechos reservados.
-          </p>
-          <div className="flex gap-md">
-            {['Privacy Policy', 'Terms', 'Network Status'].map((l) => (
-              <a key={l} href="#" className="text-white/40 hover:text-white/80 text-body-sm transition-colors duration-200">
+        <div className="reveal flex flex-col md:flex-row items-center justify-between gap-4 pt-7 border-t border-panel-line">
+          <p className="text-white/50 text-[13px]">© 2026 Nexia Tech Chile · Tecnología joven, visión de futuro.</p>
+          <div className="flex gap-6">
+            {['Política de Privacidad', 'Términos', 'Estado de Red'].map((l) => (
+              <a key={l} href="#" className="text-white/50 hover:text-white/80 text-[13px] transition-colors duration-200">
                 {l}
               </a>
             ))}
