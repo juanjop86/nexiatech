@@ -1,12 +1,12 @@
 import { Cloud, Globe, HardDrives, Monitor, ShieldCheck, WifiHigh } from '@phosphor-icons/react'
 
 const services = [
-  { num: '01', Icon: Globe,       title: 'Apps Web',       description: 'Desarrollo moderno con React, Angular y Node.js. Interfaces rápidas, escalables y mantenibles.' },
-  { num: '02', Icon: Monitor,     title: 'Apps Desktop',    description: 'Soluciones con Electron, .NET y tecnologías nativas para Windows, macOS y Linux.' },
-  { num: '03', Icon: HardDrives,  title: 'Servidores',      description: 'Administración Linux/Windows, monitoreo proactivo, respaldos automáticos y alta disponibilidad.' },
-  { num: '04', Icon: WifiHigh,    title: 'Redes',           description: 'Routing, switching, VPN y seguridad perimetral. Infraestructura estable de extremo a extremo.' },
-  { num: '05', Icon: ShieldCheck, title: 'Ciberseguridad',  description: 'Auditorías, hardening y monitoreo continuo. Protegemos tus datos y tu operación de forma proactiva.' },
-  { num: '06', Icon: Cloud,       title: 'Cloud',           description: 'Migración y operación en AWS y Azure. Entornos elásticos, automatizados y optimizados en costos.' },
+  { Icon: Globe,       title: 'Apps Web',       description: 'Desarrollo moderno con React, Angular y Node.js. Interfaces rápidas, escalables y mantenibles.', featured: true },
+  { Icon: ShieldCheck, title: 'Ciberseguridad',  description: 'Auditorías, hardening y monitoreo continuo. Protegemos tus datos y tu operación de forma proactiva.', featured: true },
+  { Icon: Monitor,     title: 'Apps Desktop',    description: 'Soluciones con Electron, .NET y tecnologías nativas para Windows, macOS y Linux.' },
+  { Icon: HardDrives,  title: 'Servidores',      description: 'Administración Linux/Windows, monitoreo proactivo y respaldos automáticos.' },
+  { Icon: WifiHigh,    title: 'Redes',           description: 'Routing, switching, VPN y seguridad perimetral de extremo a extremo.' },
+  { Icon: Cloud,       title: 'Cloud',           description: 'Migración y operación en AWS y Azure, optimizadas en costos.' },
 ]
 
 export default function Services() {
@@ -21,14 +21,17 @@ export default function Services() {
           </p>
         </div>
 
-        <div className="reveal grid md:grid-cols-3 gap-px bg-line border border-line rounded-2xl overflow-hidden">
-          {services.map(({ num, Icon, title, description }) => (
+        <div className="reveal grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4">
+          {services.map(({ Icon, title, description, featured }) => (
             <article
               key={title}
-              className="group relative bg-surface hover:bg-bg-soft transition-colors duration-300 px-8 pt-9 pb-10 min-h-[250px] flex flex-col"
+              className={`group relative rounded-2xl border px-8 pt-9 pb-10 min-h-[220px] flex flex-col transition-colors duration-300 lg:col-span-3 ${
+                featured
+                  ? 'lg:col-span-6 bg-[var(--accent-soft)] border-[color-mix(in_srgb,var(--accent)_25%,transparent)]'
+                  : 'bg-surface border-line hover:bg-bg-soft'
+              }`}
             >
-              <span className="absolute top-7 right-8 font-display text-[13px] text-ink-3 opacity-50">{num}</span>
-              <span className="absolute left-0 top-0 h-0.5 w-0 bg-grad transition-[width] duration-500 group-hover:w-full" />
+              <span className="absolute left-0 top-0 h-0.5 w-0 bg-accent transition-[width] duration-500 group-hover:w-full" />
               <div className="w-[52px] h-[52px] rounded-2xl border border-line-2 grid place-items-center text-accent mb-5 transition-all duration-500 group-hover:-translate-y-1 group-hover:-rotate-[4deg] group-hover:border-accent group-hover:bg-[var(--accent-soft)]">
                 <Icon size={26} />
               </div>

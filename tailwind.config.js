@@ -23,15 +23,12 @@ export default {
         'panel-line': 'var(--panel-line)',
         error: '#ba1a1a',
       },
-      backgroundImage: {
-        grad: 'linear-gradient(120deg, var(--accent), var(--accent-2))',
-      },
       borderRadius: {
         DEFAULT: '0.25rem',
         lg: '0.5rem',
         xl: '0.75rem',
-        '2xl': '18px',
-        '3xl': '30px',
+        '2xl': '20px',
+        '3xl': '28px',
         full: '9999px',
       },
       spacing: {

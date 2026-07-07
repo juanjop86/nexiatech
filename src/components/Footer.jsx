@@ -33,7 +33,7 @@ export default function Footer() {
                   <path d="M9 21V9l12 12V9" stroke="var(--accent-2)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </span>
-              <span>Nexia<span className="grad-text">Tech</span></span>
+              <span>Nexia<span className="text-accent-2">Tech</span></span>
             </a>
             <p className="text-panel-muted text-[14.5px] leading-relaxed max-w-[280px]">
               Tecnología joven, visión de futuro. Desarrollo, infraestructura y redes para empresas chilenas que quieren crecer.
@@ -44,7 +44,7 @@ export default function Footer() {
                   key={label}
                   href="#"
                   aria-label={label}
-                  className="w-[38px] h-[38px] rounded-[10px] border border-panel-line grid place-items-center text-panel-muted hover:text-accent-2 hover:border-accent-2 hover:-translate-y-0.5 transition-all duration-300"
+                  className="w-[38px] h-[38px] rounded-xl border border-panel-line grid place-items-center text-panel-muted hover:text-accent-2 hover:border-accent-2 hover:-translate-y-0.5 transition-all duration-300"
                 >
                   <Icon size={18} />
                 </a>

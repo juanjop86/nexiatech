@@ -7,9 +7,11 @@ export default function NavBar() {
   const { theme, toggleTheme } = useTheme()
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 12)
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
+    const sentinel = document.getElementById('scroll-sentinel')
+    if (!sentinel) return
+    const observer = new IntersectionObserver(([entry]) => setScrolled(!entry.isIntersecting), { threshold: 0 })
+    observer.observe(sentinel)
+    return () => observer.disconnect()
   }, [])
 
   return (
@@ -27,7 +29,7 @@ export default function NavBar() {
               <path d="M9 21V9l12 12V9" stroke="var(--accent)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </span>
-          <span>Nexia<span className="grad-text">Tech</span></span>
+          <span>Nexia<span className="text-accent">Tech</span></span>
         </a>
 
         {/* Nav links */}
@@ -43,19 +45,19 @@ export default function NavBar() {
           <button
             onClick={toggleTheme}
             aria-label="Cambiar tema"
-            className="w-10 h-10 rounded-[11px] border border-line-2 bg-surface text-ink grid place-items-center hover:border-accent hover:text-accent hover:-translate-y-0.5 transition-all duration-300"
+            className="w-10 h-10 rounded-xl border border-line-2 bg-surface text-ink grid place-items-center hover:border-accent hover:text-accent hover:-translate-y-0.5 transition-all duration-300"
           >
             {theme === 'dark' ? <Sun size={19} weight="regular" /> : <Moon size={19} weight="regular" />}
           </button>
           <a
             href="#contacto"
-            className="hidden sm:inline-flex items-center gap-2 bg-grad text-white px-6 py-3.5 rounded-xl font-semibold text-[15px] shadow-[0_10px_26px_-10px_var(--accent)] hover:-translate-y-0.5 hover:shadow-[0_16px_34px_-10px_var(--accent)] transition-all duration-300"
+            className="hidden sm:inline-flex items-center gap-2 bg-accent text-white px-6 py-3.5 rounded-xl font-semibold text-[15px] shadow-[0_10px_26px_-10px_var(--accent)] hover:-translate-y-0.5 hover:shadow-[0_16px_34px_-10px_var(--accent)] transition-all duration-300"
           >
             <Headset size={18} /> Soporte
           </a>
           <button
             aria-label="Menú"
-            className="md:hidden w-10 h-10 rounded-[11px] border border-line-2 bg-surface text-ink grid place-items-center"
+            className="md:hidden w-10 h-10 rounded-xl border border-line-2 bg-surface text-ink grid place-items-center"
             onClick={() => {
               const target = document.getElementById('servicios')
               window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 64, behavior: 'smooth' })

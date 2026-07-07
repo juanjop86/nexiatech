@@ -19,12 +19,9 @@ export default function WhyNexia() {
               </p>
               <div className="mt-8 flex flex-col">
                 {reasons.map((reason) => (
-                  <div key={reason.title} className="flex gap-4 items-start py-[17px] border-t border-panel-line last:border-b">
-                    <span className="w-[7px] h-[7px] rounded-full bg-accent-2 mt-2 shrink-0 shadow-[0_0_0_4px_color-mix(in_srgb,var(--accent-2)_22%,transparent)]" />
-                    <div>
-                      <b className="font-display font-medium text-[16px] block mb-1">{reason.title}</b>
-                      <span className="text-panel-muted text-[14px]">{reason.description}</span>
-                    </div>
+                  <div key={reason.title} className="py-[17px] border-t border-panel-line last:border-b">
+                    <b className="font-display font-medium text-[16px] block mb-1">{reason.title}</b>
+                    <span className="text-panel-muted text-[14px]">{reason.description}</span>
                   </div>
                 ))}
               </div>
@@ -36,7 +33,7 @@ export default function WhyNexia() {
               <div className="absolute border border-panel-line rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px]" />
               <div className="absolute border border-panel-line rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] h-[220px]" />
               <div className="relative text-center p-10">
-                <div className="font-display grad-text text-[clamp(54px,8vw,92px)] font-semibold tracking-tight leading-none">99.9%</div>
+                <div className="font-display text-accent-2 text-[clamp(54px,8vw,92px)] font-semibold tracking-tight leading-none">99.9%</div>
                 <div className="text-panel-muted mt-3 text-[14.5px]">Disponibilidad garantizada por SLA</div>
               </div>
             </div>

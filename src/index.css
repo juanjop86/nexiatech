@@ -13,7 +13,7 @@
   --line-2: rgba(15, 23, 41, 0.16);
 
   --accent: #2f5bea;
-  --accent-2: #7c3aed;
+  --accent-2: #5b82ff;
   --accent-soft: rgba(47, 91, 234, 0.09);
 
   --panel: #0e1426;
@@ -34,7 +34,7 @@
   --line-2: rgba(255, 255, 255, 0.16);
 
   --accent: #5b82ff;
-  --accent-2: #a779ff;
+  --accent-2: #85a4ff;
   --accent-soft: rgba(91, 130, 255, 0.14);
 
   --panel: #111a2e;
@@ -68,18 +68,6 @@ body {
 ::selection {
   background: var(--accent);
   color: #fff;
-}
-
-.grad-text {
-  background: linear-gradient(120deg, var(--accent), var(--accent-2));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-}
-
-.primary-gradient {
-  background: linear-gradient(120deg, var(--accent), var(--accent-2));
 }
 
 .eyebrow {

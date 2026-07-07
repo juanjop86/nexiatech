@@ -61,7 +61,7 @@ export default function Contact() {
             {!sent ? (
               <button
                 type="submit"
-                className="mt-1 inline-flex items-center justify-center gap-2 bg-grad text-white py-3.5 rounded-xl font-semibold hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300"
+                className="mt-1 inline-flex items-center justify-center gap-2 bg-accent text-white py-3.5 rounded-xl font-semibold hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300"
               >
                 <PaperPlaneTilt size={18} /> Enviar mensaje
               </button>
